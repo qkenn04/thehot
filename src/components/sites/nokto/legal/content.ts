@@ -1,4 +1,4 @@
-import { UMAMI_WEBSITE_ID } from "@/lib/analytics";
+import { AEO_TRACKING_CODE, UMAMI_WEBSITE_ID } from "@/lib/analytics";
 import { hotImage, site } from "../site";
 
 export type LegalSection = { title: string; body: string };
@@ -36,11 +36,16 @@ const umamiSection: LegalSection = {
   body: "Website dùng Umami để đếm lượt truy cập ẩn danh: trang được xem, nguồn truy cập (ví dụ Google, Facebook), loại thiết bị và trình duyệt, quốc gia và thành phố ước tính, cùng các lượt bấm nút liên hệ, đặt bàn hoặc xem sự kiện. Khi bạn hoàn tất biểu mẫu đặt bàn, chỉ số khách dự kiến được ghi lại, không kèm tên, số điện thoại hay ghi chú. Umami không dùng cookie. Địa chỉ IP chỉ được dùng tạm thời để ước tính vị trí và nhận ra các lượt xem từ cùng một thiết bị bằng một mã ẩn danh đổi mỗi tháng; IP không được lưu lại. Umami được cài trên máy chủ riêng của website, dữ liệu chỉ dùng để thống kê nội bộ và không dùng để nhận diện bạn.",
 };
 
+const aiTrafficSection: LegalSection = {
+  title: "Lượt truy cập từ trợ lý AI",
+  body: "Website dùng Ansvisor để đếm những lượt truy cập đến từ trợ lý AI như ChatGPT, Gemini hoặc Copilot. Chỉ những lượt bạn bấm vào từ câu trả lời của trợ lý AI mới được ghi lại: trang được xem, trợ lý AI đã dẫn bạn tới, loại trình duyệt, ngôn ngữ, kích thước màn hình và quốc gia ước tính. Lượt truy cập từ nguồn khác không được gửi đi. Ansvisor không dùng cookie và không lưu gì trong trình duyệt của bạn. Địa chỉ IP chỉ được dùng tạm thời để tạo một mã ẩn danh đổi mỗi ngày; IP không được lưu lại. Dữ liệu lưu trên dịch vụ cơ sở dữ liệu Supabase đặt tại Singapore và chỉ dùng để thống kê nội bộ.",
+};
+
 export const privacy: LegalDocument = {
   path: "/privacy",
   eyebrow: "THE HOT · THÔNG TIN RIÊNG TƯ",
   title: "Bảo mật thông tin",
-  updated: "15 tháng 10, 2026",
+  updated: "28 tháng 10, 2026",
   intro: "Trang này giải thích cách thông tin bạn nhập và số liệu truy cập được sử dụng trong phiên bản website hiện tại.",
   image: { src: hotImage("night.jpg"), alt: "Không khí buổi tối ở The Hot" },
   sections: [
@@ -49,6 +54,7 @@ export const privacy: LegalDocument = {
     { title: "Thông tin thanh toán", body: "Biểu mẫu trên website không yêu cầu số thẻ hoặc thông tin thanh toán." },
     { title: "Cookie và lưu trữ trên trình duyệt", body: "Website không đặt cookie và không lưu thông tin nào trong trình duyệt của bạn. Phần giới thiệu logo chạy lại mỗi lần tải trang, nội dung biểu mẫu chỉ nằm trên trang đang mở." },
     ...(UMAMI_WEBSITE_ID ? [umamiSection] : []),
+    ...(AEO_TRACKING_CODE ? [aiTrafficSection] : []),
     { title: "Thống kê của Cloudflare", body: "Website được phân phối qua Cloudflare. Công cụ Cloudflare Web Analytics, do Cloudflare tự thêm vào trang, đếm lượt truy cập và đo tốc độ tải trang mà không dùng cookie. Dữ liệu này được Cloudflare xử lý theo chính sách quyền riêng tư của Cloudflare." },
     { title: "Hỗ trợ", body: `Nếu cần trao đổi về thông tin bạn đã cung cấp trực tiếp cho nhà hàng, liên hệ ${site.phone} hoặc Facebook The Hot Beer Garden Đà Lạt.` },
   ],

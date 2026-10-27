@@ -10,6 +10,7 @@
  * `process.env.NEXT_PUBLIC_…` so Next.js can inline it). Empty: no tracker, and /privacy leaves out the Umami section.
  */
 export const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID?.trim() ?? "";
+export const AEO_TRACKING_CODE = process.env.NEXT_PUBLIC_AEO_TRACKING_CODE?.trim() ?? "";
 
 export type AnalyticsEvent =
   | "contact_click"
