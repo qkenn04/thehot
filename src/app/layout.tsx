@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { preload } from "react-dom";
 import { ClickTracker } from "@/components/analytics/ClickTracker";
+import { AiTrafficScript } from "@/components/analytics/AiTrafficScript";
 import { UmamiScript } from "@/components/analytics/UmamiScript";
 import { CustomCursor } from "@/components/sites/nokto/chrome/CustomCursor";
 import { PageTransition } from "@/components/sites/nokto/chrome/PageTransition";
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             UmamiScript (only in builds with a website ID) adds the tracker after hydration. */}
         <ClickTracker />
         <UmamiScript />
+        <AiTrafficScript />
       </body>
     </html>
   );
