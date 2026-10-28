@@ -53,6 +53,7 @@ pipeline {
     UMAMI_WEBSITE_ID = '8834d3ef-90e0-40e5-b6ca-2932a0fea7d8'
     UMAMI_SRC = 'https://stats.thehot.vn/ht.js'
     AEO_TRACKING_CODE = '61c11e5e796cfcbc4da48eff3da25ab1'
+    GA_ID = 'G-KS04WRVLZW'
     VPS = "${env.QKENN_DEPLOY_HOST}" // set by JCasC; the deploy key only works from the private network
   }
 
@@ -111,6 +112,7 @@ pipeline {
             --build-arg NEXT_PUBLIC_UMAMI_WEBSITE_ID="$UMAMI_WEBSITE_ID" \
             --build-arg NEXT_PUBLIC_UMAMI_SRC="$UMAMI_SRC" \
             --build-arg NEXT_PUBLIC_AEO_TRACKING_CODE="$AEO_TRACKING_CODE" \
+            --build-arg NEXT_PUBLIC_GA_ID="$GA_ID" \
             --label org.opencontainers.image.revision="$GIT_COMMIT" \
             --label org.opencontainers.image.source=https://github.com/qkenn04/thehot \
             --tag "$IMAGE:$GIT_COMMIT" .

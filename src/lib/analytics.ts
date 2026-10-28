@@ -1,6 +1,6 @@
 // Visitor analytics shared by every tracker (docs/specs/004-analytics, ADR 0007).
 // Umami: always on when the build has NEXT_PUBLIC_UMAMI_WEBSITE_ID; no cookies, no IP stored.
-// GA4: a later change adds it at the marked extension point in track(), only after the visitor consents.
+// GA4: receives the same filtered events when the production build loads the tracker; see ADR 0011.
 //
 // Every custom event goes through track(). NEVER send names, phone numbers, emails, notes or anything else a
 // visitor types: only the event names and property keys allowed below leave the page.
@@ -11,6 +11,7 @@
  */
 export const UMAMI_WEBSITE_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID?.trim() ?? "";
 export const AEO_TRACKING_CODE = process.env.NEXT_PUBLIC_AEO_TRACKING_CODE?.trim() ?? "";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim() ?? "";
 
 export type AnalyticsEvent =
   | "contact_click"
@@ -49,6 +50,7 @@ declare global {
     // Missing when the build has no Umami website ID (dev, smoke test, local builds), before the script has loaded,
     // or when a blocker stops it. Present but inert on hosts outside `data-domains`.
     umami?: UmamiTracker;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -93,8 +95,7 @@ export function track(name: AnalyticsEvent, props?: Readonly<Record<string, stri
     // A broken tracker must not break the button that was pressed.
   }
 
-  // ── GA4 ── extension point for the consent-gated GA4 change (spec 004 PR B): send `name` and `data` (already
-  // filtered above) to gtag here, only when the visitor has consented. Nothing else in this file needs to change.
+  window.gtag?.("event", name, data);
 }
 
 /** `data-track*` attributes for a link or button, read by ClickTracker. Works in Server Components too. */

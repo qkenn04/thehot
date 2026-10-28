@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { preload } from "react-dom";
 import { ClickTracker } from "@/components/analytics/ClickTracker";
 import { AiTrafficScript } from "@/components/analytics/AiTrafficScript";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { UmamiScript } from "@/components/analytics/UmamiScript";
 import { CustomCursor } from "@/components/sites/nokto/chrome/CustomCursor";
 import { PageTransition } from "@/components/sites/nokto/chrome/PageTransition";
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <ClickTracker />
         <UmamiScript />
         <AiTrafficScript />
+        <GoogleAnalytics />
       </body>
     </html>
   );

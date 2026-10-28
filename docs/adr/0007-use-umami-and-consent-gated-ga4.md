@@ -1,6 +1,6 @@
 # ADR 0007: Analytics bằng Umami tự cài (luôn chạy) và GA4 chỉ sau khi khách đồng ý
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-19 · Liên quan: [Mô hình đe doạ](../security/threat-model.md), [Yêu cầu phi chức năng](../product/nfr.md), [Cấu hình](../dev/configuration.md), [Đặc tả sản phẩm](../product/spec.md)
+> Trạng thái: Quyết định 2 và 3 bị thay bởi ADR 0011 (2026-10-28) · Cập nhật: 2026-10-28 · Liên quan: [Mô hình đe doạ](../security/threat-model.md), [Yêu cầu phi chức năng](../product/nfr.md), [Cấu hình](../dev/configuration.md), [Đặc tả sản phẩm](../product/spec.md)
 
 ## Trạng thái
 

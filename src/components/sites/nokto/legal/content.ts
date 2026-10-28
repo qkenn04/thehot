@@ -1,4 +1,4 @@
-import { AEO_TRACKING_CODE, UMAMI_WEBSITE_ID } from "@/lib/analytics";
+import { AEO_TRACKING_CODE, GA_ID, UMAMI_WEBSITE_ID } from "@/lib/analytics";
 import { hotImage, site } from "../site";
 
 export type LegalSection = { title: string; body: string };
@@ -41,6 +41,11 @@ const aiTrafficSection: LegalSection = {
   body: "Website dùng Ansvisor để đếm những lượt truy cập đến từ trợ lý AI như ChatGPT, Gemini hoặc Copilot. Chỉ những lượt bạn bấm vào từ câu trả lời của trợ lý AI mới được ghi lại: trang được xem, trợ lý AI đã dẫn bạn tới, loại trình duyệt, ngôn ngữ, kích thước màn hình và quốc gia ước tính. Lượt truy cập từ nguồn khác không được gửi đi. Ansvisor không dùng cookie và không lưu gì trong trình duyệt của bạn. Địa chỉ IP chỉ được dùng tạm thời để tạo một mã ẩn danh đổi mỗi ngày; IP không được lưu lại. Dữ liệu lưu trên dịch vụ cơ sở dữ liệu Supabase đặt tại Singapore và chỉ dùng để thống kê nội bộ.",
 };
 
+const googleAnalyticsSection: LegalSection = {
+  title: "Google Analytics",
+  body: "Website dùng Google Analytics để thống kê trang được xem, nguồn truy cập, loại thiết bị và các lượt bấm liên hệ hoặc đặt bàn. Công cụ này đặt các cookie bắt đầu bằng _ga trên trình duyệt để nhận ra các lượt truy cập từ cùng một thiết bị. Website tắt tính năng quảng cáo và theo dõi qua tài khoản Google (Google Signals), không gửi tên, số điện thoại hay nội dung bạn nhập trong biểu mẫu. Dữ liệu do Google xử lý theo chính sách quyền riêng tư của Google và được lưu giữ 14 tháng. Nếu không muốn bị thống kê, bạn có thể chặn cookie trong cài đặt trình duyệt hoặc cài tiện ích mở rộng Google Analytics Opt-out do Google cung cấp.",
+};
+
 export const privacy: LegalDocument = {
   path: "/privacy",
   eyebrow: "THE HOT · THÔNG TIN RIÊNG TƯ",
@@ -52,9 +57,10 @@ export const privacy: LegalDocument = {
     { title: "Biểu mẫu chuẩn bị đặt bàn", body: "Thông tin nhập trong biểu mẫu được dùng để hiển thị bản kiểm tra cuộc hẹn ngay trên trang. Website hiện chưa gửi thông tin này đến nhà hàng, chưa lưu đặt bàn vào hệ thống và chưa gửi email xác nhận. Tải lại trang sẽ xóa nội dung biểu mẫu." },
     { title: "Liên hệ qua điện thoại và Facebook", body: "Bạn chủ động chia sẻ thông tin với The Hot khi gọi hotline hoặc nhắn Facebook. Khi truy cập Facebook, thông tin được xử lý theo chính sách của Facebook." },
     { title: "Thông tin thanh toán", body: "Biểu mẫu trên website không yêu cầu số thẻ hoặc thông tin thanh toán." },
-    { title: "Cookie và lưu trữ trên trình duyệt", body: "Website không đặt cookie và không lưu thông tin nào trong trình duyệt của bạn. Phần giới thiệu logo chạy lại mỗi lần tải trang, nội dung biểu mẫu chỉ nằm trên trang đang mở." },
+    { title: "Cookie và lưu trữ trên trình duyệt", body: GA_ID ? "Ngoài các cookie do Google Analytics tạo để phục vụ thống kê (xem mục Google Analytics), website không lưu thông tin nào trong trình duyệt của bạn. Phần giới thiệu logo chạy lại mỗi lần tải trang, nội dung biểu mẫu chỉ nằm trên trang đang mở." : "Website không đặt cookie và không lưu thông tin nào trong trình duyệt của bạn. Phần giới thiệu logo chạy lại mỗi lần tải trang, nội dung biểu mẫu chỉ nằm trên trang đang mở." },
     ...(UMAMI_WEBSITE_ID ? [umamiSection] : []),
     ...(AEO_TRACKING_CODE ? [aiTrafficSection] : []),
+    ...(GA_ID ? [googleAnalyticsSection] : []),
     { title: "Thống kê của Cloudflare", body: "Website được phân phối qua Cloudflare. Công cụ Cloudflare Web Analytics, do Cloudflare tự thêm vào trang, đếm lượt truy cập và đo tốc độ tải trang mà không dùng cookie. Dữ liệu này được Cloudflare xử lý theo chính sách quyền riêng tư của Cloudflare." },
     { title: "Hỗ trợ", body: `Nếu cần trao đổi về thông tin bạn đã cung cấp trực tiếp cho nhà hàng, liên hệ ${site.phone} hoặc Facebook The Hot Beer Garden Đà Lạt.` },
   ],
