@@ -502,6 +502,90 @@
   border-color: color-mix(in srgb, var(--hot-coral) 60%, transparent);
 }
 
+.reviewsSection {
+  --reviews-line: #36302b;
+  --reviews-dashed-line: #615144;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reviewItem {
+  min-width: 0;
+}
+
+.reviewCard {
+  display: flex;
+  height: 100%;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--reviews-line);
+  border-radius: 0.75rem;
+  background: #1a1816;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.reviewCard:hover {
+  border-color: color-mix(in srgb, var(--hot-coral) 60%, transparent);
+  transform: translateY(-4px);
+}
+
+.reviewCard blockquote {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.reviewCard blockquote::before {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--hot-coral);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 0.6;
+  content: "\201C";
+}
+
+.reviewMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.875rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--reviews-dashed-line);
+  color: var(--color-subtle);
+  font-size: 0.8125rem;
+}
+
+.reviewMeta strong {
+  color: var(--color-foreground);
+  font-weight: 600;
+}
+
+.reviewStars {
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  font-size: 0.875rem;
+}
+
+.reviewSource {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--reviews-line);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
 .eventPoster {
   position: relative;
   display: block;

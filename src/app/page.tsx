@@ -5,6 +5,7 @@ import { HeroVideo } from "@/components/sites/the-hot/HeroVideo";
 import { HomeGallery } from "@/components/sites/the-hot/home/HomeGallery";
 import { HomeIntro } from "@/components/sites/the-hot/home/HomeIntro";
 import { EventTimeline } from "@/components/sites/the-hot/home/EventTimeline";
+import { HomeReviews } from "@/components/sites/the-hot/home/HomeReviews";
 import { heroVideo } from "@/components/sites/the-hot/videos";
 import { homeEventsJsonLd } from "@/seo/structured-data";
 
@@ -32,6 +33,7 @@ export default function HomePage() {
       <HomeIntro />
       <HomeGallery />
       <EventTimeline />
+      <HomeReviews />
       <SiteFooter />
       {/* The events in <EventTimeline />; the restaurant and website are in the root layout's JSON-LD. */}
       {eventsJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: eventsJsonLd }} />}
