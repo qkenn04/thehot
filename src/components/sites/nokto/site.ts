@@ -21,7 +21,7 @@ export const site = {
   sloganLines,
   rootTitle: `The Hot Beer Garden Đà Lạt — ${slogan}`,
   rootDescription:
-    `${slogan} Quán nhậu cho hội bạn ở Đà Lạt: mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. Đặt bàn: 0967 539 939.`,
+    `${slogan} Quán nhậu cho hội bạn: mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. Đặt bàn: 0967 539 939.`,
   rootOgDescription: `${slogan} Mồi bén, bia lạnh và những đêm nhạc giữa Đà Lạt.`,
   schemaDescription: "The Hot Beer Garden tại 28 Sương Nguyệt Ánh, P. Lâm Viên, Đà Lạt. Nhà hàng nhậu cho giới trẻ, phục vụ món ăn, bia và âm nhạc từ 17:30 đến khuya.",
   label: "BEER GARDEN · ĐÀ LẠT",
