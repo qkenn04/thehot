@@ -6,7 +6,7 @@ PR A (Umami) là PR #13, merge 2026-10-15. Website ID có từ 2026-10-15; track
 
 ## Chuẩn bị
 
-- [x] 004-T01 Chốt hướng: Umami luôn chạy, GA4 sau đồng ý, Google Signals tắt · 2026-10-14
+- [x] 004-T01 Chốt hướng: Umami luôn chạy, GA4 không banner, Google Signals tắt · ADR 0011 · 2026-10-28
 - [ ] 004-T02 Chủ quán trả lời [spec.md mục 12](spec.md#12-câu-hỏi-mở) · xong khi: không còn `[CẦN XÁC NHẬN]` chặn PR A hay PR B
 - [x] 004-T03 Hạ tầng Umami chạy, có Website ID (2026-10-15) · repo hạ tầng riêng
 - [ ] 004-T04 Quyết định giữ hay tắt Cloudflare Web Analytics
@@ -38,15 +38,15 @@ PR A (Umami) là PR #13, merge 2026-10-15. Website ID có từ 2026-10-15; track
 - [ ] 004-T25 24–48 giờ sau deploy: đánh dấu key event `contact_click`, `reservation_complete`; liên kết Search Console; publish collection Search Console
 - [ ] 004-T26 Internal traffic: khai IP wifi quán, bộ lọc ở Testing khoảng 1 tuần rồi Active
 
-## PR B: GA4 + banner
+## PR B: GA4, không banner
 
-- [ ] 004-T30 `consent.ts`, `useConsent`, `useSplashDone`, `useGaAllowed`, `gtag.d.ts`
-- [ ] 004-T31 `ga.ts` (`enableGa`, `disableGa`, `deleteGaCookies`, `sendGaEvent` với danh sách thuộc tính cho phép); phần GA4 trong `track()` · AC: 004-AC-04, 004-AC-05
-- [ ] 004-T32 `ConsentBanner`, `CookieSettingsButton`; nút nổi dịch lên trên màn hình hẹp · AC: 004-AC-02, 004-AC-03, 004-AC-11, 004-AC-12
-- [ ] 004-T33 Footer: link "Bảo mật thông tin · Cài đặt cookie"; `/privacy`: mục GA4, nút Cài đặt cookie · AC: 004-AC-14
-- [ ] 004-T34 Biến build `NEXT_PUBLIC_GA_ID`; smoke test kiểm HTML không có `googletagmanager`
+- [x] 004-T30 `GoogleAnalytics.tsx`, `GA_ID`, `gtag` và phần GA4 trong `track()`; không gửi lệnh consent · ADR 0011
+- [x] 004-T31 Biến build `NEXT_PUBLIC_GA_ID`; chỉ tải trên `thehot.vn` và `www.thehot.vn`; quảng cáo và Google Signals tắt
+- [x] 004-T32 `/privacy`: mục Google Analytics và câu cookie theo điều kiện có GA ID
+- [x] 004-T33 Banner đồng ý và nút cài đặt cookie bỏ theo ADR 0011
+- [ ] 004-T34 `docker build --target check`, Realtime, cookie `_ga` và DebugView sau deploy
 - [ ] 004-T35 Kiểm 004-AC-02 đến 004-AC-13 trên production và điện thoại thật (plan mục 5) · AC: 004-AC-08, 004-AC-13
-- [ ] 004-T36 Chủ quán duyệt chữ banner và `/privacy` trước khi merge
+- [ ] 004-T36 Chủ quán duyệt chữ `/privacy` (mục Cookie và Google Analytics) trước khi merge
 
 ## Tài liệu
 

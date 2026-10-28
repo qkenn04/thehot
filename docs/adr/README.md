@@ -19,6 +19,7 @@ Thư mục này ghi **vì sao** hệ thống có hình dạng như hiện nay: m
 | [0008](0008-compress-hero-video-without-trimming.md) | Video hero giữ đủ 103 s và giữ âm thanh, giảm dung lượng bằng AV1 + 720p faststart, hoãn tải | Chấp nhận | 2026-10-15 | — |
 | [0009](0009-notify-search-engines-after-deploy.md) | Báo máy tìm kiếm sau mỗi deploy: gửi lại sitemap cho Google (Search Console API), URL đổi qua IndexNow; không dùng Indexing API | Đề xuất | — | — |
 | [0010](0010-check-rich-results-with-signed-in-chrome.md) | Kiểm Rich Results Test bằng script điều khiển Chrome đã đăng nhập Google; đọc dữ liệu nhúng trong trang kết quả, giao diện làm dự phòng; chỉ chạy trên máy dev | Đề xuất | — | — |
+| [0011](0011-load-ga4-without-consent-banner.md) | GA4 tải trên thehot.vn cho mọi khách, không banner; tắt quảng cáo và Google Signals | Đang áp dụng | 2026-10-28 | — |
 
 ADR 0002 đến 0006 ghi lại các quyết định đã thực hiện trong ngày 2026-10-14, trước khi có thư mục này; ADR 0007 ghi lại quyết định đã chốt trong kế hoạch cùng ngày, lúc đó chưa triển khai; Umami đã triển khai ngày 2026-10-15, GA4 thì chưa. Tất cả có dòng "Ghi lại" theo quy tắc 5 của [ADR 0001](0001-record-architecture-decisions.md). Tài liệu cho phía máy chủ (nginx, stack, Jenkins) nằm ở repo `qkenn04/infra-qkenn`.
 
