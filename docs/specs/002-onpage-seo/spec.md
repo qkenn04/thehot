@@ -46,13 +46,13 @@ Trang con có tiêu đề dạng `<tiêu đề> — The Hot Beer Garden Đà L�
 
 | Trang | `<title>` | Mô tả |
 |---|---|---|
-| `/` | The Hot Beer Garden Đà Lạt — Quán nhậu chill, bia lạnh | Giữ nguyên mô tả cũ (slogan + địa chỉ + 17:30 + hotline). Thẻ chia sẻ (Open Graph, Twitter) giữ tiêu đề slogan "The Hot Beer Garden Đà Lạt — Đà Lạt lên đèn, The Hot lên mood." |
+| `/` | The Hot Beer Garden Đà Lạt — Quán Nhậu Chill, Bia Lạnh | Giữ nguyên mô tả cũ (slogan + địa chỉ + 17:30 + hotline). Thẻ chia sẻ (Open Graph, Twitter) giữ tiêu đề slogan "The Hot Beer Garden Đà Lạt — Đà Lạt lên đèn, The Hot lên mood." |
 | `/menu` | Menu — The Hot Beer Garden Đà Lạt | Menu nhậu The Hot Beer Garden Đà Lạt: món ăn từ 39K, giá đã gồm VAT. Bia ưu đãi từ 19K, Chủ nhật đến thứ Năm. Lật menu, chốt món rồi đặt bàn. |
-| `/menu/list` | Bảng giá món nhậu & bia — The Hot Beer Garden Đà Lạt | Bảng giá món nhậu The Hot Đà Lạt: món ăn chơi, salad, gà, mực, heo, bò từ 39.000₫, giá đã gồm VAT. Bia ưu đãi Chủ nhật đến thứ Năm. |
-| `/about` | Beer garden chill cho hội bạn — The Hot Beer Garden Đà Lạt | The Hot là beer garden cho hội bạn ở Đà Lạt: chỗ ngồi ngoài trời, mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. |
-| `/reservation` | Đặt bàn quán nhậu cho hội bạn — The Hot Beer Garden Đà Lạt | Đặt bàn cho hội bạn tại The Hot Beer Garden Đà Lạt: chọn ngày, giờ, số người rồi chốt qua hotline 0967 539 939 hoặc Facebook. 28 Sương Nguyệt Ánh. |
-| `/terms` | Giờ mở cửa & địa chỉ — The Hot Beer Garden Đà Lạt | The Hot Beer Garden Đà Lạt mở cửa từ 17:30 tại 28 Sương Nguyệt Ánh, P. Lâm Viên. Cách đặt bàn, nhóm đông, giá và ưu đãi bia. Hotline 0967 539 939. |
-| `/privacy` | Bảo mật thông tin — The Hot Beer Garden Đà Lạt | Giữ nguyên |
+| `/menu/list` | Bảng Giá Món Nhậu & Bia — The Hot Beer Garden Đà Lạt | Bảng giá món nhậu The Hot Đà Lạt: món ăn chơi, salad, gà, mực, heo, bò từ 39.000₫, giá đã gồm VAT. Bia ưu đãi Chủ nhật đến thứ Năm. |
+| `/about` | Beer Garden Chill Cho Hội Bạn — The Hot Beer Garden Đà Lạt | The Hot là beer garden cho hội bạn ở Đà Lạt: chỗ ngồi ngoài trời, mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. |
+| `/reservation` | Đặt Bàn Quán Nhậu Cho Hội Bạn — The Hot Beer Garden Đà Lạt | Đặt bàn cho hội bạn tại The Hot Beer Garden Đà Lạt: chọn ngày, giờ, số người rồi chốt qua hotline 0967 539 939 hoặc Facebook. 28 Sương Nguyệt Ánh. |
+| `/terms` | Giờ Mở Cửa & Địa Chỉ — The Hot Beer Garden Đà Lạt | The Hot Beer Garden Đà Lạt mở cửa từ 17:30 tại 28 Sương Nguyệt Ánh, P. Lâm Viên. Cách đặt bàn, nhóm đông, giá và ưu đãi bia. Hotline 0967 539 939. |
+| `/privacy` | Bảo Mật Thông Tin — The Hot Beer Garden Đà Lạt | Giữ nguyên |
 
 H1 và slogan trên giao diện không đổi.
 
