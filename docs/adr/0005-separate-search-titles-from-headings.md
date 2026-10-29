@@ -37,7 +37,7 @@ Chấp nhận.
 
 ## Quyết định
 
-1. `src/seo/page-meta.ts` là nơi duy nhất chứa tiêu đề và mô tả cho tìm kiếm: `homeTitle` ("The Hot Beer Garden Đà Lạt — Quán nhậu chill, bia lạnh"), `pageMeta` cho 6 trang con, `brandName` dùng cho hậu tố " — The Hot Beer Garden Đà Lạt".
+1. `src/seo/page-meta.ts` là nơi duy nhất chứa tiêu đề và mô tả cho tìm kiếm: `homeTitle` ("The Hot Beer Garden Đà Lạt — Quán Nhậu Chill, Bia Lạnh"), `pageMeta` cho 6 trang con, `brandName` dùng cho hậu tố " — The Hot Beer Garden Đà Lạt".
 2. Mọi `page.tsx` lấy metadata bằng `pageMetadata(path)`: title, description, canonical, Open Graph (tiêu đề đầy đủ vì template không áp vào Open Graph) kèm ảnh `/opengraph-image.png` (1200×630, alt = tiêu đề slogan).
 3. Trang chủ: `<title>` là `homeTitle`; Open Graph và Twitter giữ tiêu đề slogan `site.rootTitle` và mô tả hiện có.
 4. Layout gốc chỉ khai `twitter: { card: "summary_large_image" }`; Next.js lấy tiêu đề và mô tả Twitter từ Open Graph của từng trang. Không khai `twitter` ở cấp trang.

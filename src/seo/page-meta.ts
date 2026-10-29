@@ -8,7 +8,7 @@ import { site } from "@/components/sites/nokto/site";
 export const brandName = `${site.name} ${site.location}`;
 
 /** The home `<title>`. Home Open Graph/Twitter keep the slogan title (`site.rootTitle`), set in the root layout. */
-export const homeTitle = `${brandName} — Quán nhậu chill, bia lạnh`;
+export const homeTitle = `${brandName} — Quán Nhậu Chill, Bia Lạnh`;
 
 /** `title` is the part before the layout's " — <brandName>" suffix. */
 export const pageMeta = {
@@ -18,24 +18,24 @@ export const pageMeta = {
       "Menu The Hot Beer Garden Đà Lạt: mồi từ 39K, combo cho 4 và 6 người kèm bia, lẩu, mẹt, rượu và tháp bia. Giá đã gồm VAT. Lật menu, chốt món rồi đặt bàn.",
   },
   "/menu/list": {
-    title: "Bảng giá món nhậu & bia",
+    title: "Bảng Giá Món Nhậu & Bia",
     description:
       "Bảng giá The Hot Đà Lạt: mồi từ 39.000₫, combo cho 4 và 6 người kèm bia Tiger, lẩu, mẹt, món heo, bò, gà, tôm, rượu và vang. Giá đã gồm VAT.",
   },
   "/about": {
-    title: "Beer garden chill cho hội bạn",
+    title: "Beer Garden Chill Cho Hội Bạn",
     description: `The Hot là beer garden cho hội bạn ở Đà Lạt: chỗ ngồi ngoài trời, mồi bén, bia lạnh, nhạc lên. Ghé ${site.address.street} từ ${site.hours.opens}.`,
   },
   "/reservation": {
-    title: "Đặt bàn quán nhậu cho hội bạn",
+    title: "Đặt Bàn Quán Nhậu Cho Hội Bạn",
     description: `Đặt bàn cho hội bạn tại The Hot Beer Garden Đà Lạt: chọn ngày, giờ, số người rồi chốt qua hotline ${site.phone} hoặc Facebook. 28 Sương Nguyệt Ánh.`,
   },
   "/terms": {
-    title: "Giờ mở cửa & địa chỉ",
+    title: "Giờ Mở Cửa & Địa Chỉ",
     description: `The Hot Beer Garden Đà Lạt mở cửa từ ${site.hours.opens} tại ${site.address.street}. Cách đặt bàn, nhóm đông, giá và ưu đãi bia. Hotline ${site.phone}.`,
   },
   "/privacy": {
-    title: "Bảo mật thông tin",
+    title: "Bảo Mật Thông Tin",
     description: "Thông tin về biểu mẫu đặt bàn và các liên kết liên hệ trên website The Hot.",
   },
 } as const satisfies Record<string, { title: string; description: string }>;

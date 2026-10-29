@@ -150,7 +150,7 @@ Tính tới 2026-10-14 có 5 mục: 1 sự kiện có ngày thật ("Sạc pin �
 | Tên | Ý nghĩa |
 |---|---|
 | `brandName` | "The Hot Beer Garden Đà Lạt"; layout nối " — `brandName`" vào tiêu đề mọi trang con |
-| `homeTitle` | `<title>` trang chủ: "The Hot Beer Garden Đà Lạt — Quán nhậu chill, bia lạnh" |
+| `homeTitle` | `<title>` trang chủ: "The Hot Beer Garden Đà Lạt — Quán Nhậu Chill, Bia Lạnh" |
 | `pageMeta[path]` | `title`, `description` của 6 trang con |
 | `pageMetadata(path)` | Tạo metadata trang con: title, description, canonical, Open Graph kèm ảnh chia sẻ chung `/opengraph-image.png` (1200×630) |
 
