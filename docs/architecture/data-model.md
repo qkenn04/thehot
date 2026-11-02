@@ -1,6 +1,6 @@
 # Mô hình dữ liệu nội dung
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-19 · Liên quan: [Kiến trúc](ARCHITECTURE.md), [Đặc tả sản phẩm](../product/spec.md), [Front-end](../dev/frontend.md), [Kiểm thử](../dev/testing.md), [Mục lục ADR](../adr/README.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-02 · Liên quan: [Kiến trúc](ARCHITECTURE.md), [Đặc tả sản phẩm](../product/spec.md), [Front-end](../dev/frontend.md), [Kiểm thử](../dev/testing.md), [Mục lục ADR](../adr/README.md)
 
 Site không có cơ sở dữ liệu. "Dữ liệu" là các module TypeScript, file JSON và file trong `public/` mà trang, metadata, JSON-LD và sitemap cùng đọc. Nguồn sự thật là chính các file đó (kiểu TypeScript là schema); file này giải thích điều code không nói: ai đọc gì, bất biến nào không được phá, và đổi dữ liệu thế nào. Tính tới 2026-10-14.
 
@@ -218,3 +218,10 @@ Sự kiện `dateOnly` không có trạng thái `live` (không biết giờ di�
 
 - Giờ mở cửa 16:30 hay 17:30: Chưa xác định — cần chủ quán xác nhận. Sau khi chốt, sửa `site.hours`, các chỗ lệch ở I-01, và cân nhắc thêm `openingHoursSpecification` vào JSON-LD.
 - Lịch sự kiện thật: Chưa xác định — cần chủ quán xác nhận.
+
+
+## Bổ sung sự kiện (2026-11-02)
+
+`HomeEvent.performers` chứa tên nghệ sĩ đã xác nhận, chuyển thành `Person` trong JSON-LD `performer`; tên cũng hiện trong mô tả sự kiện. `timing.endsAt` có thể bỏ trống: giao diện chỉ hiện giờ bắt đầu, JSON-LD bỏ `endDate`. Khi thiếu giờ kết thúc, không gán trạng thái đang diễn ra; sau ngày bắt đầu tại Đà Lạt, mục chuyển sang đã diễn ra theo ngày lịch.
+
+Chủ quán cung cấp bài đăng và hai ảnh nghệ sĩ cho “Mật Ngữ Cung Trăng” ngày 26/09/2026: DJ LOFEAR, DJ PETER. Tạm dùng 20:00 theo bài đăng, chờ đối chiếu poster ghi 19:00. Chưa xác định giờ kết thúc và giá vé; không xuất `offers`. Dùng ảnh sân khấu thật hiện có làm ảnh không gian. Không gán các nghệ sĩ này hoặc DJ Mie cho ba sự kiện khác khi chưa xác nhận.

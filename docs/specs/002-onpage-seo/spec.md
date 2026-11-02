@@ -1,6 +1,6 @@
 # 002: SEO trên trang
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-18 · Liên quan: [Mục lục spec](../README.md), [plan.md](plan.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005), [Lộ trình M1, M2](../../plan/roadmap.md#m2-on-page-và-dữ-liệu-có-cấu-trúc)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-02 · Liên quan: [Mục lục spec](../README.md), [plan.md](plan.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005), [Lộ trình M1, M2](../../plan/roadmap.md#m2-on-page-và-dữ-liệu-có-cấu-trúc)
 
 Những gì Google, Facebook và Zalo đọc được từ chính các trang của https://thehot.vn: tiêu đề và mô tả trong kết quả tìm kiếm, ảnh khi chia sẻ link, dữ liệu có cấu trúc (JSON-LD) về quán, chữ alt của ảnh và phần chữ giới thiệu trên trang. Mục tiêu là để người tìm "quán nhậu chill Đà Lạt", "beer garden Đà Lạt" hay tên quán thấy đúng trang, với thông tin khớp Google Business Profile.
 
@@ -194,3 +194,10 @@ Phần A, B: M1. Phần C–F: M2 ([lộ trình](../../plan/roadmap.md#m2-on-pag
 | 2026-10-18 | Thêm phần G (link trang ở footer, khoảng đệm cho cụm nút liên hệ) và 002-AC-10, 002-AC-11 |
 | 2026-10-18 | Phần F: khối giới thiệu ở trang chủ (H2, ba đoạn, link) và chữ link "Xem menu nhậu"; hỏi đáp còn chờ |
 | 2026-10-18 | Phần D xong: kết quả rà alt 7 trang, alt poster hai sự kiện thật, lint chặn ảnh thiếu alt |
+
+
+## Bổ sung nghệ sĩ (2026-11-02)
+
+Thêm “Mật Ngữ Cung Trăng” ngày 26/09/2026 từ bài đăng và ảnh chủ quán cung cấp: `performer` gồm DJ LOFEAR và DJ PETER, tên cũng hiện trong mô tả trên trang. Tạm dùng 20:00 theo bài đăng (poster ghi 19:00); chưa xác định giờ kết thúc và giá vé. Không xuất `endDate` hoặc `offers` khi chưa xác nhận.
+
+Kiểm tra: sự kiện mới có đúng hai nghệ sĩ và giờ hiển thị “Từ 20:00”. Ba sự kiện Friday on Fire, Hot Saturday và Sạc pin đêm không nhận các nghệ sĩ mới; cảnh báo thiếu `performer`, `offers` của chúng chưa được xử lý.

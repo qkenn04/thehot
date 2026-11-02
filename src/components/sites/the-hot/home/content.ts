@@ -33,6 +33,19 @@ export const galleryPhotos: GalleryPhoto[] = [
 // were confirmed by the owner on 2026-10-15; the other programmes are illustrative.
 export const homeEvents: HomeEvent[] = [
   {
+    id: "mat-ngu-cung-trang",
+    title: "Mật Ngữ Cung Trăng",
+    subtitle: "Đêm Trung Thu tại The Hot",
+    description: "Đêm Trung Thu cùng DJ LOFEAR và DJ PETER, performance Chú Cuội & Hằng Nga và mini game với nhiều phần quà. Inbox The Hot để giữ bàn.",
+    poster: hotImage("night.jpg"),
+    posterAlt: "Không gian sân khấu The Hot Beer Garden về đêm",
+    tags: ["Trung Thu", "DJ LOFEAR", "DJ PETER", "Mini game"],
+    performers: ["DJ LOFEAR", "DJ PETER"],
+    // Owner supplied the post and artist posters; use the post's 20:00 provisionally
+    // (poster says 19:00). Closing time and admission price are not confirmed.
+    timing: { kind: "scheduled", startsAt: "2026-09-26T20:00:00+07:00" },
+  },
+  {
     id: "hot-saturday",
     title: "Hot Saturday",
     subtitle: "Cuối tuần, lên mood hết cỡ",
