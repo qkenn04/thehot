@@ -1,7 +1,7 @@
 export type EventStatus = "upcoming" | "live" | "past";
 export type EventFilter = "all" | EventStatus;
 export type EventTiming =
-  | { kind: "scheduled"; startsAt: string; endsAt: string; dateOnly?: boolean }
+  | { kind: "scheduled"; startsAt: string; endsAt?: string; dateOnly?: boolean }
   | { kind: "announcement"; dateLabel: string };
 
 export type HomeEvent = {
@@ -15,6 +15,7 @@ export type HomeEvent = {
   timing: EventTiming;
   sourceHref?: string;
   illustrative?: boolean;
+  performers?: readonly string[];
 };
 
 export const eventStatusLabels: Record<EventStatus, string> = {
@@ -27,6 +28,12 @@ export const eventStatusLabels: Record<EventStatus, string> = {
 export function getEventStatus(event: HomeEvent, now: number): EventStatus | null {
   if (event.timing.kind !== "scheduled") return null;
   const start = Date.parse(event.timing.startsAt);
+  if (!Number.isFinite(start)) return null;
+  if (!event.timing.endsAt) {
+    if (now < start) return "upcoming";
+    const date = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Ho_Chi_Minh" });
+    return date.format(now) !== date.format(start) ? "past" : null;
+  }
   const end = Date.parse(event.timing.endsAt);
   if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return null;
   if (now < start) return "upcoming";
@@ -51,6 +58,10 @@ export function getEventDate(event: HomeEvent) {
 export function getEventTimeRange(event: HomeEvent): string | null {
   if (event.timing.kind !== "scheduled" || event.timing.dateOnly) return null;
   const start = new Date(event.timing.startsAt);
+  if (!event.timing.endsAt) {
+    if (!Number.isFinite(start.getTime())) return null;
+    return `Từ ${new Intl.DateTimeFormat("vi-VN", { timeZone: "Asia/Ho_Chi_Minh", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(start)}`;
+  }
   const end = new Date(event.timing.endsAt);
   if (!Number.isFinite(start.getTime()) || !Number.isFinite(end.getTime())) return null;
   const timeZone = "Asia/Ho_Chi_Minh";

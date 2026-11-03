@@ -93,11 +93,14 @@ function localDate(time: number): string {
 const ISO_DATE_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?([+-]\d{2}:\d{2}|Z)$/;
 
 /** ISO 8601 start and end, or null when the event has no valid schedule (same rule as getEventStatus). */
-function eventDates(event: HomeEvent): { startDate: string; endDate: string } | null {
+function eventDates(event: HomeEvent): { startDate: string; endDate?: string } | null {
   if (event.timing.kind !== "scheduled") return null;
   const { startsAt, endsAt, dateOnly } = event.timing;
-  if (!ISO_DATE_TIME.test(startsAt) || !ISO_DATE_TIME.test(endsAt)) return null;
+  if (!ISO_DATE_TIME.test(startsAt)) return null;
   const start = Date.parse(startsAt);
+  if (!Number.isFinite(start)) return null;
+  if (!endsAt) return { startDate: dateOnly ? localDate(start) : startsAt };
+  if (!ISO_DATE_TIME.test(endsAt)) return null;
   const end = Date.parse(endsAt);
   if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return null;
   if (!dateOnly) return { startDate: startsAt, endDate: endsAt };
@@ -106,7 +109,7 @@ function eventDates(event: HomeEvent): { startDate: string; endDate: string } | 
   return { startDate: localDate(start), endDate: localDate(end - 1) };
 }
 
-function eventNode(event: HomeEvent, dates: { startDate: string; endDate: string }): JsonLdNode {
+function eventNode(event: HomeEvent, dates: { startDate: string; endDate?: string }): JsonLdNode {
   return {
     "@type": "Event",
     // Each event card's heading has this id on the home page.
@@ -114,6 +117,7 @@ function eventNode(event: HomeEvent, dates: { startDate: string; endDate: string
     name: event.title,
     ...dates,
     description: event.description,
+    ...(event.performers?.length ? { performer: event.performers.map((name) => ({ "@type": "Person", name })) } : {}),
     image: [absolute(event.poster)],
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
