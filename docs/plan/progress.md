@@ -1,6 +1,6 @@
 # Tiến độ
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-15 · Liên quan: [Lộ trình](roadmap.md), [Việc sắp làm](tasks.md), [Mục lục spec](../specs/README.md), [Hiệu năng: số đo](../dev/perf.md), [Triển khai](../ops/deployment.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Lộ trình](roadmap.md), [Việc sắp làm](tasks.md), [Mục lục spec](../specs/README.md), [Hiệu năng: số đo](../dev/perf.md), [Triển khai](../ops/deployment.md)
 
 Nguồn sự thật duy nhất về trạng thái SEO, tốc độ và đo lường của https://thehot.vn.
 
@@ -66,6 +66,7 @@ Mới nhất ở trên. Giờ theo giờ Việt Nam (UTC+7).
 
 | Ngày | Việc | Bằng chứng |
 |---|---|---|
+| 2026-11-07 | Chủ quán xác nhận giờ mở cửa **16:30 – 24:00, mọi ngày** (thay quyết định 17:30 ngày 2026-10-14; Google Maps vốn ghi đúng) và khoảng giá 100.000 – 300.000 ₫ mỗi khách. `site.hours`, khung đặt bàn từ 16:30, `llms.txt`; JSON-LD có `openingHoursSpecification` và `priceRange`; `/terms` hiện khoảng giá | Nhánh `content/opening-hours-1630`, [Q1, Q3](tasks.md#câu-hỏi-chờ-chủ-quán) |
 | 2026-10-15 12:55 | Báo máy tìm kiếm chạy thật: repo hạ tầng PR #10 merge và áp (`install.sh`, credential `gsc-service-account` có trong Jenkins); merge PR #18; build #29 deploy `4a61480`, cả 6 trang mang ngày `2026-10-15T06:45:20+07:00` (lần đầu có `page-meta.ts` trong `shared`), stage Notify search engines: Google `sitemaps.submit` HTTP 204, IndexNow 202 cho 6 URL. Google đọc lại `/` lúc 05:55 sau khi JSON-LD lên: Events PASS (3 sự kiện, cảnh báo thiếu `offers`, `performer`). `/reservation` Google chưa crawl lần nào (URL Inspection "URL is unknown to Google"), không có lỗi kỹ thuật; để Google tự crawl theo sitemap | Jenkins build #29, URL Inspection API |
 | 2026-10-15 | Báo máy tìm kiếm sau deploy: `ci/notify-search.sh`, stage `Sitemap snapshot` và `Notify search engines` (Google `sitemaps.submit` qua service account, IndexNow cho URL có `lastmod` đổi; lỗi chỉ làm stage vàng), khoá IndexNow trong `public/`, ADR 0009 Đề xuất; `src/seo/page-meta.ts` vào `shared` (PR #17 đã không đổi `lastmod` của `/menu`, `/menu/list`). Thử một lần `sitemaps.submit` thật: HTTP 204, Google tải lại sitemap sau khoảng 2 s. Search Console qua API: sitemap 6 URL trang, 37 ảnh, 0 lỗi; 5/6 trang đã index, `/reservation` "Discovered - currently not indexed". PR #18 chờ duyệt; credential Jenkins ở PR #10 của repo hạ tầng | [TK31](tasks.md), [001 tasks](../specs/001-sitemap-automation/tasks.md), [ADR 0009](../adr/0009-notify-search-engines-after-deploy.md) |
 | 2026-10-15 | Mô tả trang `/menu` và `/menu/list` có combo, lẩu, mẹt, rượu (chủ quán duyệt bản xem thử); bỏ câu ưu đãi bia tới khi có câu trả lời Q16. Deploy PR #15, #16: WSL của máy CI lại tự khởi động lại lúc 05:47 khi build #26 (PR #16) đang chạy, build bị giết (`exit code -1`); lần này cache git không có object rỗng, chạy lại build #27 thành công | [002-T16](../specs/002-onpage-seo/tasks.md), [runbook 001](../ops/runbooks/001-jenkins-git-cache-corrupted.md#lịch-sử-sự-cố) |

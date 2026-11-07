@@ -1,6 +1,6 @@
 # Lộ trình
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-15 · Liên quan: [Bản đồ tài liệu](../README.md), [Việc sắp làm](tasks.md), [Tiến độ](progress.md), [Mục lục spec](../specs/README.md), [Mục lục ADR](../adr/README.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Bản đồ tài liệu](../README.md), [Việc sắp làm](tasks.md), [Tiến độ](progress.md), [Mục lục spec](../specs/README.md), [Mục lục ADR](../adr/README.md)
 
 Lộ trình đưa https://thehot.vn (The Hot Beer Garden Đà Lạt) lên Google và giữ nó nhanh, đo được: nền tảng kỹ thuật, nội dung trên trang, tốc độ, đo lường, rồi các việc ngoài website do chủ quán làm.
 
@@ -194,7 +194,7 @@ Vì sao thứ tự này:
    - Tên đúng tên thật "The Hot Beer Garden", không nhét từ khoá (Google cấm, có thể khoá hồ sơ).
    - Danh mục chính Quán nhậu hoặc Beer garden (chọn cái đúng nhất); danh mục phụ: Quán bar, Nhà hàng Việt Nam, Quán bia.
    - Website `https://thehot.vn/?utm_source=google&utm_medium=gbp`; link đặt chỗ `https://thehot.vn/reservation?utm_source=google&utm_medium=gbp&utm_campaign=booking`.
-   - **Giờ mở cửa: đổi từ 16:30 sang 17:30** cho khớp website (chủ quán xác nhận 17:30, 2026-10-14). Giờ đóng cửa: [CẦN XÁC NHẬN: 00:00 hay 00:30 — chưa xác định, cần chủ quán xác nhận]. Thêm giờ đặc biệt cho lễ Tết.
+   - **Giờ mở cửa: 16:30 – 24:00, mọi ngày** (chủ quán xác nhận 2026-11-07; hồ sơ Google đã ghi đúng, website đổi theo). Thêm giờ đặc biệt cho lễ Tết.
    - Mô tả khoảng 750 ký tự, tự nhiên: beer garden, Đà Lạt về đêm, nhạc, hội bạn.
    - Thuộc tính: chỗ ngồi ngoài trời, nhạc sống (chỉ khi đúng), phù hợp nhóm, hình thức thanh toán.
    - Menu kèm ảnh, giá, link `https://thehot.vn/menu`.
@@ -212,7 +212,7 @@ Vì sao thứ tự này:
 
 **Điều kiện xong** (thiết lập ban đầu; phần còn lại chạy đều ở M6).
 
-- [ ] Google Maps ghi giờ mở 17:30, khớp website
+- [x] Google Maps ghi giờ 16:30 – 24:00, khớp website (2026-11-07)
 - [ ] Website và link đặt chỗ trên hồ sơ Google dùng UTM
 - [ ] Mã QR xin đánh giá đặt ở bàn
 - [ ] Facebook, Instagram, TikTok, Bing Places, Apple Business Connect dùng cùng chuỗi tên, địa chỉ, điện thoại và link `thehot.vn`

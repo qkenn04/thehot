@@ -1,5 +1,5 @@
 import { AEO_TRACKING_CODE, GA_ID, UMAMI_WEBSITE_ID } from "@/lib/analytics";
-import { hotImage, site } from "../site";
+import { hotImage, pendingFacts, site } from "../site";
 
 export type LegalSection = { title: string; body: string };
 export type LegalDocument = {
@@ -16,7 +16,7 @@ export const terms: LegalDocument = {
   path: "/terms",
   eyebrow: "THE HOT · THÔNG TIN ĐẶT BÀN",
   title: "Thông tin đặt bàn",
-  updated: "12 tháng 10, 2026",
+  updated: "7 tháng 11, 2026",
   intro: "Hẹn bàn và trao đổi yêu cầu trực tiếp với The Hot để nhà hàng xác nhận cuộc hẹn của bạn.",
   image: { src: hotImage("welcome.jpg"), alt: "Quầy phục vụ The Hot Beer Garden" },
   sections: [
@@ -25,7 +25,7 @@ export const terms: LegalDocument = {
     { title: "Thông tin trên website", body: "Biểu mẫu giúp bạn chuẩn bị và kiểm tra thông tin cuộc hẹn. Thông tin chưa tự động gửi đến nhà hàng; việc hoàn thành biểu mẫu chưa phải xác nhận đặt bàn." },
     { title: "Thay đổi cuộc hẹn", body: `Nếu muốn đổi giờ, số khách hoặc hủy cuộc hẹn, vui lòng gọi ${site.phone} hoặc nhắn lại Facebook để The Hot hỗ trợ.` },
     { title: "Nhóm đông và yêu cầu riêng", body: "Liên hệ trực tiếp nếu đi theo nhóm đông, tổ chức dịp đặc biệt hoặc có yêu cầu về món ăn và chỗ ngồi. Báo trước các dị ứng thực phẩm để trao đổi với nhà hàng." },
-    { title: "Giá và ưu đãi", body: `Giá trong bộ ảnh menu tính bằng VNĐ và đã bao gồm VAT. ${site.beerOffer} Liên hệ The Hot để kiểm tra thực đơn và ưu đãi tại thời điểm ghé quán.` },
+    { title: "Giá và ưu đãi", body: `${pendingFacts.priceRange ? `Mỗi khách thường chi khoảng ${pendingFacts.priceRange}. ` : ""}Giá trong bộ ảnh menu tính bằng VNĐ và đã bao gồm VAT. ${site.beerOffer} Liên hệ The Hot để kiểm tra thực đơn và ưu đãi tại thời điểm ghé quán.` },
   ],
 };
 

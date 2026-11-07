@@ -1,6 +1,6 @@
 # Yêu cầu phi chức năng
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-15 · Liên quan: [Đặc tả sản phẩm](spec.md), [Kiến trúc](../architecture/ARCHITECTURE.md), [Số đo hiệu năng](../dev/perf.md), [Kiểm thử](../dev/testing.md), [Mô hình đe doạ](../security/threat-model.md), [Triển khai](../ops/deployment.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Đặc tả sản phẩm](spec.md), [Kiến trúc](../architecture/ARCHITECTURE.md), [Số đo hiệu năng](../dev/perf.md), [Kiểm thử](../dev/testing.md), [Mô hình đe doạ](../security/threat-model.md), [Triển khai](../ops/deployment.md)
 
 File này là **ngân sách**: ngưỡng phải đạt và cách đo. Số đo thật nằm ở [dev/perf.md](../dev/perf.md); ở đây chỉ ghi kết quả gần nhất.
 
@@ -93,4 +93,4 @@ Chi tiết đe doạ và lớp bảo vệ: [mô hình đe doạ](../security/thr
 
 | Chỉ số | Giá trị A (nguồn) | Giá trị B (nguồn) | Chọn | Ghi chú |
 |---|---|---|---|---|
-| Giờ mở cửa | 16:30–00:00 (Google Maps, 2026-10-14) | "từ 17:30", "17:30 – Late" (`site.ts`) | Chưa xác định — cần chủ quán xác nhận | Ảnh hưởng SEO-03 và [Đặc tả sản phẩm](spec.md), G4 |
+| Giờ mở cửa | 16:30–00:00 (Google Maps, 2026-10-14) | "từ 16:30", "16:30 – 24:00" (`site.ts`, 2026-11-07) | Đã khớp: chủ quán xác nhận 16:30 – 24:00, mọi ngày (2026-11-07) | Ảnh hưởng SEO-03 và [Đặc tả sản phẩm](spec.md), G4 |

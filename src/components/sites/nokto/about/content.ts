@@ -11,7 +11,7 @@ export const about = {
   body: [
     `Ở ${site.name}, kèo vui bắt đầu từ một tin nhắn: "Tối nay đi đâu?". Một bàn mồi ngon, bia lạnh và đám bạn hợp cạ là đủ.`,
     `Gọi món theo gu cả bàn: chút đồ giòn để lai rai, món đậm đà để nhắm bia, thêm cơm hay mì cho hội đang đói. Vừa ăn vừa kể chuyện, nhạc lên là cùng nhập cuộc.`,
-    `Hẹn hội mình ở ${site.address.display}, từ ${site.hours.opens} đến khuya. Gọi ${site.phone} hoặc nhắn Facebook để chốt bàn trước khi tới.`,
+    `Hẹn hội mình ở ${site.address.display}, từ ${site.hours.opens} đến ${site.hours.closes}. Gọi ${site.phone} hoặc nhắn Facebook để chốt bàn trước khi tới.`,
   ],
   experience: { name: "Hợp cạ là vui", role: "The Hot Đà Lạt" },
   experienceImage: { src: hotImage("friends.jpg"), alt: "Khách và nhân viên tại The Hot Beer Garden" } satisfies AboutImage,
