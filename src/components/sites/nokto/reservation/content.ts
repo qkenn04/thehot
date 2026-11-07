@@ -15,7 +15,7 @@ export const reservation = {
     policy: [site.hours.display, site.phone, "Xác nhận trực tiếp với The Hot"],
   },
   image: { src: hotImage("friends.jpg"), alt: "Khách ghé The Hot Beer Garden Đà Lạt" },
-  availableTimes: ["17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"],
+  availableTimes: ["16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"],
   guests: { min: 1, max: 8, initial: 2, overflowNote: `Kéo hội đông hơn hoặc muốn đến giờ khác? Gọi ${site.phone}, The Hot hỗ trợ nhé.` },
   notesMaxLength: 500,
   steps: [

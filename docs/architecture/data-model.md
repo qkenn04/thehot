@@ -1,6 +1,6 @@
 # Mô hình dữ liệu nội dung
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-02 · Liên quan: [Kiến trúc](ARCHITECTURE.md), [Đặc tả sản phẩm](../product/spec.md), [Front-end](../dev/frontend.md), [Kiểm thử](../dev/testing.md), [Mục lục ADR](../adr/README.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Kiến trúc](ARCHITECTURE.md), [Đặc tả sản phẩm](../product/spec.md), [Front-end](../dev/frontend.md), [Kiểm thử](../dev/testing.md), [Mục lục ADR](../adr/README.md)
 
 Site không có cơ sở dữ liệu. "Dữ liệu" là các module TypeScript, file JSON và file trong `public/` mà trang, metadata, JSON-LD và sitemap cùng đọc. Nguồn sự thật là chính các file đó (kiểu TypeScript là schema); file này giải thích điều code không nói: ai đọc gì, bất biến nào không được phá, và đổi dữ liệu thế nào. Tính tới 2026-10-14.
 
@@ -93,7 +93,8 @@ flowchart LR
 | `rootDescription`, `schemaDescription` | Mô tả trang chủ; mô tả trong JSON-LD | Metadata gốc, JSON-LD |
 | `address` (`street`, `city`, `region`, `country`, `display`) | 28 Sương Nguyệt Ánh, P. Lâm Viên, Đà Lạt, Lâm Đồng, VN | Footer, `/terms`, `/about`, JSON-LD, mô tả trang |
 | `phone`, `phoneHref` | Hotline hiển thị và link `tel:` | Footer, nút Gọi, form đặt bàn, JSON-LD (`telephone`) |
-| `hours` (`opens`, `display`) | "17:30", "17:30 – Late" | Footer, `/terms`, `/about`, mô tả trang. Đang lệch Google Maps (mục 11) |
+| `hours` (`opens`, `closes`, `display`) | "16:30", "24:00", "16:30 – 24:00", mở mọi ngày (chủ quán xác nhận 2026-11-07, khớp Google Maps) | Footer, `/terms`, `/about`, mô tả trang, `rootDescription`, `schemaDescription` |
+| `pendingFacts` | `openingHours` (thứ Hai đến Chủ nhật, 16:30 đến 00:00), `priceRange` "100.000 ₫ - 300.000 ₫" (2026-11-07); `paymentAccepted`, `liveMusic` còn trống | JSON-LD `Restaurant`; `priceRange` cũng hiện ở mục "Giá và ưu đãi" của `/terms` (I-02) |
 | `socialHref`, `messengerHref`, `zaloHref` | Facebook, Messenger, Zalo của quán | Nút liên hệ nhanh; `socialHref` còn ở footer, menu điều hướng, bước cuối form đặt bàn, khối sự kiện trang chủ, JSON-LD `sameAs` |
 | `profiles` (`instagram`, `tiktok`, `google`, `tripadvisor`) | Instagram, TikTok, hồ sơ Google, TripAdvisor của quán | JSON-LD `sameAs` (cả bốn); footer (Instagram, TikTok) |
 | `logo`, `nav`, `footerNav`, `cta`, `legal` | Logo, menu điều hướng, dòng link trang ở footer, nút Đặt bàn, link trang pháp lý. `nav`, `footerNav`, `legal` lấy từng link từ `pageLinks` (một nhãn, một đường dẫn cho mỗi trang) | Khung trang (`chrome/`): `footerNav` ở `SiteFooter` |
@@ -156,7 +157,7 @@ Tính tới 2026-10-14 có 5 mục: 1 sự kiện có ngày thật ("Sạc pin �
 
 ### 5.7 Form đặt bàn (chỉ trong trình duyệt)
 
-Trạng thái form nằm trong state React của `ReservationForm.tsx`: ngày, giờ (khung 17:30–21:00), số khách (1–8), tên, họ, email và điện thoại (không bắt buộc), ghi chú (tối đa 500 ký tự), xác nhận chính sách. Không có bản lưu nào ngoài bộ nhớ của tab (bất biến I-08).
+Trạng thái form nằm trong state React của `ReservationForm.tsx`: ngày, giờ (khung 16:30–21:00), số khách (1–8), tên, họ, email và điện thoại (không bắt buộc), ghi chú (tối đa 500 ký tự), xác nhận chính sách. Không có bản lưu nào ngoài bộ nhớ của tab (bất biến I-08).
 
 ## 6. Trường dẫn xuất
 
@@ -172,7 +173,7 @@ Trạng thái form nằm trong state React của `ReservationForm.tsx`: ngày, g
 
 | Mã | Bất biến | Giữ bằng | Kiểm |
 |---|---|---|---|
-| I-01 | Tên, địa chỉ, hotline, giờ mở cửa chỉ khai một lần ở `site.ts`; mọi chỗ khác đọc từ đó | Import từ `site` | Kiểm tay: `grep -rn "Sương Nguyệt Ánh\|0967\|17:30" src`. **Còn lệch (2026-10-14):** `site.rootDescription` và `site.schemaDescription` gõ lại địa chỉ, giờ, hotline; `pageMeta["/reservation"].description` gõ lại "28 Sương Nguyệt Ánh"; `about.numbers` gõ cứng 28 và 17:30; `reservation.availableTimes` bắt đầu 17:30 độc lập với `site.hours.opens` |
+| I-01 | Tên, địa chỉ, hotline, giờ mở cửa chỉ khai một lần ở `site.ts`; mọi chỗ khác đọc từ đó | Import từ `site` | Kiểm tay: `grep -rn "Sương Nguyệt Ánh\|0967\|16:30" src`. **Còn lệch (2026-11-07):** `site.rootDescription` và `site.schemaDescription` gõ lại địa chỉ, hotline (giờ đã đọc từ `hours`); `pageMeta["/reservation"].description` gõ lại "28 Sương Nguyệt Ánh"; `about.numbers` gõ cứng 28; `reservation.availableTimes` bắt đầu 16:30 độc lập với `site.hours.opens`; `public/llms.txt` gõ tay giờ mở cửa |
 | I-02 | JSON-LD chỉ chứa thông tin cũng hiện trên trang và đã được chủ quán xác nhận (không thêm giờ, `priceRange`, `Event` khi chưa chốt) | `restaurantSchema` dựng từ `site` | Rich Results Test; review |
 | I-03 | Mọi route trong `src/app` được khai trong `seo/sitemap-pages.json` (`pages`, `exclude` hoặc `dynamic`); `sources` của mỗi trang tồn tại và chứa file page của trang | `seo/check-sitemap-pages.mjs` | `npm run check:sitemap`, bước Check trên Jenkins |
 | I-04 | Mọi URL trong sitemap có `<lastmod>`; mọi `<loc>` và `<image:loc>` nằm trên domain của site và trả 200 (ảnh trả `image/*`) | `ci/sitemap-lastmod.sh`, `sitemap.ts` | `ci/smoke-test.sh` |
@@ -216,7 +217,6 @@ Sự kiện `dateOnly` không có trạng thái `live` (không biết giờ di�
 
 ## 11. Câu hỏi mở
 
-- Giờ mở cửa 16:30 hay 17:30: Chưa xác định — cần chủ quán xác nhận. Sau khi chốt, sửa `site.hours`, các chỗ lệch ở I-01, và cân nhắc thêm `openingHoursSpecification` vào JSON-LD.
 - Lịch sự kiện thật: Chưa xác định — cần chủ quán xác nhận.
 
 

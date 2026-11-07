@@ -1,6 +1,6 @@
 # 002: SEO trên trang
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-02 · Liên quan: [Mục lục spec](../README.md), [plan.md](plan.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005), [Lộ trình M1, M2](../../plan/roadmap.md#m2-on-page-và-dữ-liệu-có-cấu-trúc)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Mục lục spec](../README.md), [plan.md](plan.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005), [Lộ trình M1, M2](../../plan/roadmap.md#m2-on-page-và-dữ-liệu-có-cấu-trúc)
 
 Những gì Google, Facebook và Zalo đọc được từ chính các trang của https://thehot.vn: tiêu đề và mô tả trong kết quả tìm kiếm, ảnh khi chia sẻ link, dữ liệu có cấu trúc (JSON-LD) về quán, chữ alt của ảnh và phần chữ giới thiệu trên trang. Mục tiêu là để người tìm "quán nhậu chill Đà Lạt", "beer garden Đà Lạt" hay tên quán thấy đúng trang, với thông tin khớp Google Business Profile.
 
@@ -46,12 +46,12 @@ Trang con có tiêu đề dạng `<tiêu đề> — The Hot Beer Garden Đà L�
 
 | Trang | `<title>` | Mô tả |
 |---|---|---|
-| `/` | The Hot Beer Garden Đà Lạt — Quán Nhậu Chill, Bia Lạnh | Giữ nguyên mô tả cũ (slogan + địa chỉ + 17:30 + hotline). Thẻ chia sẻ (Open Graph, Twitter) giữ tiêu đề slogan "The Hot Beer Garden Đà Lạt — Đà Lạt lên đèn, The Hot lên mood." |
+| `/` | The Hot Beer Garden Đà Lạt — Quán Nhậu Chill, Bia Lạnh | Giữ nguyên mô tả cũ (slogan + địa chỉ + giờ mở cửa + hotline). Thẻ chia sẻ (Open Graph, Twitter) giữ tiêu đề slogan "The Hot Beer Garden Đà Lạt — Đà Lạt lên đèn, The Hot lên mood." |
 | `/menu` | Menu — The Hot Beer Garden Đà Lạt | Menu nhậu The Hot Beer Garden Đà Lạt: món ăn từ 39K, giá đã gồm VAT. Bia ưu đãi từ 19K, Chủ nhật đến thứ Năm. Lật menu, chốt món rồi đặt bàn. |
 | `/menu/list` | Bảng Giá Món Nhậu & Bia — The Hot Beer Garden Đà Lạt | Bảng giá món nhậu The Hot Đà Lạt: món ăn chơi, salad, gà, mực, heo, bò từ 39.000₫, giá đã gồm VAT. Bia ưu đãi Chủ nhật đến thứ Năm. |
-| `/about` | Beer Garden Chill Cho Hội Bạn — The Hot Beer Garden Đà Lạt | The Hot là beer garden cho hội bạn ở Đà Lạt: chỗ ngồi ngoài trời, mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. |
+| `/about` | Beer Garden Chill Cho Hội Bạn — The Hot Beer Garden Đà Lạt | The Hot là beer garden cho hội bạn ở Đà Lạt: chỗ ngồi ngoài trời, mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 16:30. |
 | `/reservation` | Đặt Bàn Quán Nhậu Cho Hội Bạn — The Hot Beer Garden Đà Lạt | Đặt bàn cho hội bạn tại The Hot Beer Garden Đà Lạt: chọn ngày, giờ, số người rồi chốt qua hotline 0967 539 939 hoặc Facebook. 28 Sương Nguyệt Ánh. |
-| `/terms` | Giờ Mở Cửa & Địa Chỉ — The Hot Beer Garden Đà Lạt | The Hot Beer Garden Đà Lạt mở cửa từ 17:30 tại 28 Sương Nguyệt Ánh, P. Lâm Viên. Cách đặt bàn, nhóm đông, giá và ưu đãi bia. Hotline 0967 539 939. |
+| `/terms` | Giờ Mở Cửa & Địa Chỉ — The Hot Beer Garden Đà Lạt | The Hot Beer Garden Đà Lạt mở cửa từ 16:30 tại 28 Sương Nguyệt Ánh, P. Lâm Viên. Cách đặt bàn, nhóm đông, giá và ưu đãi bia. Hotline 0967 539 939. |
 | `/privacy` | Bảo Mật Thông Tin — The Hot Beer Garden Đà Lạt | Giữ nguyên |
 
 H1 và slogan trên giao diện không đổi.
@@ -79,8 +79,8 @@ Mọi trang có `og:image` là thẻ chia sẻ chung `/opengraph-image.png` (120
 | `hasMap` | Link hồ sơ Google của quán (`https://share.google/GzxQd0SE6t7QogToT`) | Hồ sơ Google | Có |
 | `logo` | Logo của quán (`/sites/the-hot-beer-garden/images/logo.png`; bản SVG nếu có) | `site.ts` | Có (PNG) |
 | `image` | 3–5 ảnh thật, ưu tiên ảnh ngang chất lượng cao | Chờ ảnh (001-T40) | Tạm: 5 ảnh gallery + ảnh chia sẻ |
-| `openingHoursSpecification` | Mở 17:30 (chủ quán xác nhận 2026-10-14). Giờ đóng cửa và các ngày mở: [CẦN XÁC NHẬN: giờ đóng cửa (00:00 hay 00:30?) và quán mở mọi ngày trong tuần không — chưa xác định, cần chủ quán xác nhận] | Chủ quán | Chưa (`pendingFacts`, để trống) |
-| `priceRange` | [CẦN XÁC NHẬN: khoảng giá — chưa xác định, cần chủ quán xác nhận] | Chủ quán | Chưa (`pendingFacts`) |
+| `openingHoursSpecification` | Mọi ngày, mở 16:30, đóng 24:00 (ghi `00:00` trong JSON-LD); chủ quán xác nhận 2026-11-07 | Chủ quán | Có (`pendingFacts.openingHours`) |
+| `priceRange` | "100.000 ₫ - 300.000 ₫" mỗi khách (chủ quán xác nhận 2026-11-07); cũng hiện ở mục "Giá và ưu đãi" của `/terms` | Chủ quán | Có (`pendingFacts.priceRange`) |
 | `paymentAccepted` | [CẦN XÁC NHẬN: hình thức thanh toán — chưa xác định, cần chủ quán xác nhận] | Chủ quán | Chưa (`pendingFacts`) |
 | `amenityFeature` | Chỗ ngồi ngoài trời. Nhạc sống: [CẦN XÁC NHẬN: có nhạc sống không, tối nào — chưa xác định, cần chủ quán xác nhận] | Hồ sơ Google ghi cả hai; chỉ dùng "nhạc sống" khi chủ quán xác nhận | Chỗ ngồi ngoài trời: có. Nhạc sống: chưa (`pendingFacts`) |
 | Khác | `acceptsReservations` (URL `/reservation`), `menu` và `hasMenu` (`/menu/list`: bản chữ có giá, máy đọc được; `/menu` là ảnh), `servesCuisine`, `currenciesAccepted` | `site.ts` | Có |
@@ -179,7 +179,6 @@ Phần A, B: M1. Phần C–F: M2 ([lộ trình](../../plan/roadmap.md#m2-on-pag
 
 - [CẦN XÁC NHẬN: giờ đóng cửa (00:00 hay 00:30?) và các ngày mở trong tuần — chưa xác định, cần chủ quán xác nhận]
 - [CẦN XÁC NHẬN: có nhạc sống không; nếu có thì tối nào (sự kiện thứ Sáu ghi "Live performance") — chưa xác định, cần chủ quán xác nhận]
-- [CẦN XÁC NHẬN: khoảng giá phổ biến (dùng cho `priceRange` và Google Maps) — chưa xác định, cần chủ quán xác nhận]
 - [CẦN XÁC NHẬN: hình thức thanh toán (tiền mặt, chuyển khoản, thẻ, ví) — chưa xác định, cần chủ quán xác nhận]
 - [CẦN XÁC NHẬN: có logo SVG gốc không — chưa xác định, cần chủ quán xác nhận]
 - [CẦN XÁC NHẬN: thông tin cho phần hỏi đáp (chỗ để xe, nhóm đông tối đa bao nhiêu người) — chưa xác định, cần chủ quán xác nhận]

@@ -5,6 +5,12 @@ export const THE_HOT_ASSET_BASE = "/sites/the-hot-beer-garden";
 const sloganLines = ["Đà Lạt lên đèn,", "The Hot lên mood."] as const;
 const slogan = sloganLines.join(" ");
 
+const hours = {
+  opens: "16:30",
+  closes: "24:00",
+  display: "16:30 – 24:00",
+} as const;
+
 const pageLinks = {
   menu: { label: "Thực đơn", href: "/menu" },
   menuList: { label: "Bảng giá món", href: "/menu/list" },
@@ -21,19 +27,16 @@ export const site = {
   sloganLines,
   rootTitle: `The Hot Beer Garden Đà Lạt — ${slogan}`,
   rootDescription:
-    `${slogan} Quán nhậu cho hội bạn: mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ 17:30. Đặt bàn: 0967 539 939.`,
+    `${slogan} Quán nhậu cho hội bạn: mồi bén, bia lạnh, nhạc lên. Ghé 28 Sương Nguyệt Ánh, P. Lâm Viên từ ${hours.opens}. Đặt bàn: 0967 539 939.`,
   rootOgDescription: `${slogan} Mồi bén, bia lạnh và những đêm nhạc giữa Đà Lạt.`,
-  schemaDescription: "The Hot Beer Garden tại 28 Sương Nguyệt Ánh, P. Lâm Viên, Đà Lạt. Nhà hàng nhậu cho giới trẻ, phục vụ món ăn, bia và âm nhạc từ 17:30 đến khuya.",
+  schemaDescription: `The Hot Beer Garden tại 28 Sương Nguyệt Ánh, P. Lâm Viên, Đà Lạt. Nhà hàng nhậu cho giới trẻ, phục vụ món ăn, bia và âm nhạc từ ${hours.opens} đến ${hours.closes}.`,
   label: "BEER GARDEN · ĐÀ LẠT",
   tagline: "Đà Lạt Chill Zone",
   logo: { src: `${THE_HOT_ASSET_BASE}/images/logo.png`, width: 640, height: 479 },
   nav: [pageLinks.menu, pageLinks.about, pageLinks.reservation],
   footerNav: [pageLinks.menu, pageLinks.menuList, pageLinks.about, pageLinks.reservation, pageLinks.terms, pageLinks.privacy],
   cta: { label: "Đặt bàn", href: "/reservation" },
-  hours: {
-    opens: "17:30",
-    display: "17:30 – Late",
-  },
+  hours,
   address: { street: "28 Sương Nguyệt Ánh, P. Lâm Viên", city: "Đà Lạt", region: "Lâm Đồng", country: "VN", display: "28 Sương Nguyệt Ánh, P. Lâm Viên, Đà Lạt" },
   /** Map pin of the address above, supplied by the owner (structured data only). */
   geo: { latitude: 11.950599, longitude: 108.456165 },
@@ -68,7 +71,7 @@ type Weekday = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Sat
 
 /** Business facts the structured data emits only once they are set (src/seo/structured-data.ts). */
 export type PendingFacts = {
-  /** Weekly hours, "HH:MM" in Đà Lạt time. Opening time is `site.hours.opens`; the closing time and open days are not confirmed. */
+  /** Weekly hours, "HH:MM" in Đà Lạt time, matching `site.hours`; midnight is written "00:00". */
   openingHours?: readonly { days: readonly Weekday[]; opens: string; closes: string }[];
   /** Typical spend per guest, as the owner states it (`priceRange`). */
   priceRange?: string;
@@ -79,7 +82,16 @@ export type PendingFacts = {
 };
 
 // Awaiting owner confirmation: leave each field unset until the owner confirms it (and the site shows it).
-export const pendingFacts: PendingFacts = {};
+export const pendingFacts: PendingFacts = {
+  openingHours: [
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: hours.opens,
+      closes: "00:00",
+    },
+  ],
+  priceRange: "100.000 ₫ - 300.000 ₫",
+};
 
 export function siteImage(file: string) {
   return `${ASSET_BASE}/images/${file}`;

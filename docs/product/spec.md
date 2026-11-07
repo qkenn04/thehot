@@ -1,6 +1,6 @@
 # Đặc tả sản phẩm: The Hot Beer Garden (thehot.vn)
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-19 · Liên quan: [Yêu cầu phi chức năng](nfr.md), [Thuật ngữ](glossary.md), [Kiến trúc](../architecture/ARCHITECTURE.md), [Mô hình dữ liệu nội dung](../architecture/data-model.md), [Mục lục ADR](../adr/README.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Yêu cầu phi chức năng](nfr.md), [Thuật ngữ](glossary.md), [Kiến trúc](../architecture/ARCHITECTURE.md), [Mô hình dữ liệu nội dung](../architecture/data-model.md), [Mục lục ADR](../adr/README.md)
 
 ## 1. Tóm tắt một đoạn
 
@@ -17,7 +17,7 @@ Tính tới 2026-10-14:
 | Tiêu đề trang chủ chỉ là slogan | Không chứa từ khách tìm ("quán nhậu", "bia lạnh", "Đà Lạt") | Đã sửa ở PR #5 ([ADR 0005](../adr/0005-separate-search-titles-from-headings.md)) |
 | LCP trên điện thoại 2,9 s (PageSpeed Mobile, 2026-10-14) | Vượt ngưỡng "tốt" 2,5 s của Core Web Vitals | [Số đo](../dev/perf.md); PR #4 ([ADR 0006](../adr/0006-prioritize-lcp-with-fetchpriority.md)) |
 | Video đầu trang chủ nặng khoảng 80 MB | Tốn dữ liệu di động của khách | Sửa ở PR #16: bản AV1 26,8 MB hoặc H.264 720p 31,5 MB, chỉ tải sau khi trang tải xong và qua màn hình chờ ([ADR 0008](../adr/0008-compress-hero-video-without-trimming.md)) |
-| Google Maps ghi giờ mở cửa 16:30–00:00, site ghi "từ 17:30" | Thông tin quán không nhất quán, ảnh hưởng SEO địa phương và lòng tin của khách | Mục 10, câu hỏi 1 |
+| Google Maps ghi giờ mở cửa 16:30–00:00, site ghi "từ 17:30" (đã sửa 2026-11-07: site ghi 16:30 – 24:00) | Thông tin quán không nhất quán, ảnh hưởng SEO địa phương và lòng tin của khách | Mục 10, câu hỏi 1 |
 | Chưa có công cụ đo lượt truy cập ngoài Cloudflare Web Analytics | Không biết khách đến từ đâu, bấm liên hệ bao nhiêu | [ADR 0007](../adr/0007-use-umami-and-consent-gated-ga4.md) |
 | Ảnh nền `hero-backdrop.jpg` của template NOKTO vẫn hiện trên mọi trang | Ảnh thuộc chủ template | [ADR 0003](../adr/0003-allow-search-indexing.md), mục Hệ quả |
 
@@ -102,9 +102,9 @@ Một thay đổi được coi là xong khi:
 
 ## 10. Câu hỏi mở
 
-1. Giờ mở cửa đúng là 16:30 (Google Maps) hay 17:30 (site)? Chưa xác định — cần chủ quán xác nhận. Ảnh hưởng: G4, AC-04, JSON-LD `openingHoursSpecification`, khung giờ trong form đặt bàn.
+1. Giờ mở cửa đúng là 16:30 (Google Maps) hay 17:30 (site)? **Trả lời 2026-11-07: 16:30 – 24:00, mọi ngày.** Ảnh hưởng: G4, AC-04, JSON-LD `openingHoursSpecification`, khung giờ trong form đặt bàn.
 2. Quán có nhạc sống mỗi tối, chỉ cuối tuần, hay chỉ DJ/playlist? Chưa xác định — cần chủ quán xác nhận. Ảnh hưởng: nội dung SEO, thuộc tính Google Business Profile.
-3. Khoảng giá phổ biến (`priceRange`)? Chưa xác định — cần chủ quán xác nhận.
+3. Khoảng giá phổ biến (`priceRange`)? **Trả lời 2026-11-07: 100.000 – 300.000 ₫ mỗi khách.**
 4. Lịch sự kiện thật thay cho 4 chương trình minh hoạ ở trang chủ? Chưa xác định — cần chủ quán xác nhận. Ảnh hưởng: G7, NG4.
 5. Thay ảnh nền template `hero-backdrop.jpg` bằng ảnh của quán hay gradient CSS, và khi nào? Chủ quán chọn giữ tạm ([ADR 0003](../adr/0003-allow-search-indexing.md)); thời hạn thay: Chưa xác định — cần chủ quán xác nhận.
 6. Đoạn video hero dùng lâu dài? Chưa xác định — cần chủ quán xác nhận (hiện giữ đủ 103 s). Trên điện thoại: vẫn phát video, hoãn tải (chủ quán, 2026-10-15; [ADR 0008](../adr/0008-compress-hero-video-without-trimming.md)).

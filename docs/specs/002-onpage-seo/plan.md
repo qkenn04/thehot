@@ -1,6 +1,6 @@
 # 002: SEO trên trang, kế hoạch kỹ thuật
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-15 · Liên quan: [spec.md](spec.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [spec.md](spec.md), [tasks.md](tasks.md), [Mục lục ADR](../../adr/README.md) (ADR 0005)
 
 ## 1. Tóm tắt cách làm
 
@@ -31,7 +31,7 @@ Chờ duyệt: PR #10 (`8d9ec01`, `6680248`, mở 2026-10-15):
 
 - `src/seo/structured-data.ts` (mới) dựng JSON-LD từ `site.ts` và dữ liệu trang chủ, thay hằng `restaurantSchema` trong `layout.tsx`. Root layout xuất một `@graph` trên mọi trang: nút `Restaurant` + `BarOrPub` (`@id` `/#restaurant`) và nút `WebSite` (`@id` `/#website`). Trường cụ thể ở [spec phần C](spec.md#phần-c-dữ-liệu-có-cấu-trúc-đợt-1-xong-pr-10).
 - `Event`: chỉ trang chủ xuất (Google muốn dữ liệu sự kiện nằm trên trang hiện sự kiện), một `@graph` thứ hai cho mọi phần tử của `homeEvents` không có `illustrative` và có lịch hợp lệ; sự kiện chỉ có ngày (`dateOnly`) dùng ngày không kèm giờ. Không có `offers` (chưa biết giá vé). Trang tĩnh, nên danh sách là bản trong `content.ts` lúc build.
-- `site.ts`: `pendingFacts` (giờ mở cửa, `priceRange`, `paymentAccepted`, nhạc sống) có kiểu nhưng **để trống**; chỉ xuất khi chủ quán xác nhận. Không đặt giá trị chưa xác nhận làm giá trị mặc định.
+- `site.ts`: `pendingFacts` (giờ mở cửa, `priceRange`, `paymentAccepted`, nhạc sống) chỉ xuất khi chủ quán xác nhận; từ 2026-11-07 có `openingHours` và `priceRange`, hai mục còn lại để trống. Không đặt giá trị chưa xác nhận làm giá trị mặc định.
 - JSON được escape (`<` thành `\u003c`) theo hướng dẫn JSON-LD của Next.js.
 - `public/favicon.ico` (16/32/48 px, khoảng 5,6 KB) cho trình duyệt và crawler gọi thẳng `/favicon.ico` (đang 404). Là tệp tĩnh trong `public/`, không phải `app/favicon.ico`, nên Next.js không thêm `<link>` mới; link `/icon.png` giữ nguyên để Google tiếp tục đọc cùng URL favicon.
 - Kiểm trước merge: validator.schema.org cho JSON-LD trang chủ 0 lỗi, 0 cảnh báo; JSON đọc được trên 7 trang; mọi URL tuyệt đối và trả 200; `@id` trỏ đúng; ngày theo ISO 8601; sự kiện minh hoạ bị loại. `<body>` của 7 trang giống `main` trừ thẻ JSON-LD sự kiện mới trên `/`. Lint, typecheck, `check:sitemap`, build, `docker build --target check` đạt.

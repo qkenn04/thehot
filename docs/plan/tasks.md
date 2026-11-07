@@ -1,6 +1,6 @@
 # Việc sắp làm
 
-> Trạng thái: Đang áp dụng · Cập nhật: 2026-10-18 · Liên quan: [Lộ trình](roadmap.md), [Tiến độ](progress.md), [Mục lục spec](../specs/README.md)
+> Trạng thái: Đang áp dụng · Cập nhật: 2026-11-07 · Liên quan: [Lộ trình](roadmap.md), [Tiến độ](progress.md), [Mục lục spec](../specs/README.md)
 
 Mốc đang làm: đóng M1; M2, M3, M4 làm song song tuỳ việc nào gỡ chặn trước (2026-10-15: M2 đã có JSON-LD đợt 1 trên production, M3 đã xong cache và video hero); chủ quán bắt đầu M5 ngay ([lộ trình](roadmap.md)). Việc chi tiết của từng tính năng nằm trong `tasks.md` của spec; ở đây chỉ trỏ tới.
 
@@ -10,7 +10,7 @@ Người làm: **Chủ quán** (chủ quán hoặc người quản lý) · **Dev
 
 ### Làm ngay
 
-- [ ] TK01 Google Business Profile: đổi giờ mở cửa từ 16:30 sang **17:30** cho khớp website · mốc M5 · xong khi: Google Maps hiện 17:30 · gấp: khách đang thấy giờ sai; từ 2026-10-15 AI Overview của Google cũng hiện "4:30 PM–12 AM", lấy từ Google Maps và TripAdvisor (sửa cả TripAdvisor: TK15)
+- [x] TK01 Google Business Profile: giờ mở cửa khớp website · mốc M5 · không cần sửa nữa: 2026-11-07 chủ quán xác nhận giờ đúng là **16:30 – 24:00**, mọi ngày, đúng như Google Maps đang ghi; website đổi theo (trước đó, 2026-10-14, đã chốt 17:30)
 - [ ] TK02 Cloudflare: xác nhận SSL/TLS đang ở **Full (strict)** · M1 · xong khi: gửi ảnh chụp màn hình (không kiểm được từ bên ngoài)
 - [x] TK03 Search Console: URL Inspection → `https://thehot.vn/terms` → Request indexing · M1 · [001-T31](../specs/001-sitemap-automation/tasks.md) · không cần nữa: `/terms` đã "Submitted and indexed" (URL Inspection API, 2026-10-15)
 - [x] TK04 Search Console → Sitemaps: kiểm *Success* và 6 trang được khám phá · M1 · [001-T32](../specs/001-sitemap-automation/tasks.md) · 2026-10-15 qua API: 6 URL trang, 37 ảnh, 0 lỗi
@@ -18,7 +18,7 @@ Người làm: **Chủ quán** (chủ quán hoặc người quản lý) · **Dev
 - [ ] TK06 Search Console → Settings → Users: thêm quyền cho người cùng làm · M1
 - [ ] TK07 Google Business Profile: website `https://thehot.vn/?utm_source=google&utm_medium=gbp`, link đặt chỗ `https://thehot.vn/reservation?utm_source=google&utm_medium=gbp&utm_campaign=booking` · M5 · làm cùng TK01: link từ hồ sơ Google giúp Google gắn site với quán khi tìm tên quán
 - [ ] TK08 Trả lời các câu hỏi ở mục [Câu hỏi chờ chủ quán](#câu-hỏi-chờ-chủ-quán) · chặn M2
-- [ ] TK15 TripAdvisor: nhận (claim) trang của quán rồi sửa danh mục (đang là Events/Attraction, cần nhà hàng hoặc quán bar), giờ mở cửa (đang 16:30, đúng là 17:30), ghim bản đồ (lệch khoảng 40 m), thêm website `https://thehot.vn` · M5 · [002-T62](../specs/002-onpage-seo/tasks.md) · gấp: AI Overview đọc giờ từ đây; trang này đứng thứ 2 khi tìm tên quán
+- [ ] TK15 TripAdvisor: nhận (claim) trang của quán rồi sửa danh mục (đang là Events/Attraction, cần nhà hàng hoặc quán bar), giờ mở cửa (đang 16:30, đúng; kiểm thêm giờ đóng 24:00), ghim bản đồ (lệch khoảng 40 m), thêm website `https://thehot.vn` · M5 · [002-T62](../specs/002-onpage-seo/tasks.md) · gấp: AI Overview đọc giờ từ đây; trang này đứng thứ 2 khi tìm tên quán
 - [ ] TK16 Thêm `https://thehot.vn` vào tiểu sử Instagram, TikTok và mục Website của trang Facebook `thehot.dalat` (UTM theo [004 mục 4.2](../specs/004-analytics/spec.md#42-quy-ước-utm) nếu muốn đo) · M5 · [002-T61](../specs/002-onpage-seo/tasks.md) · vì: ba trang này đang đứng trên site khi tìm tên quán; link chính chủ từ đó trỏ về site giúp Google nhận site là website chính thức
 - [x] TK17 Sau khi PR #10 lên production: Rich Results Test cho `https://thehot.vn/`, rồi Search Console → URL Inspection → `https://thehot.vn/` → Request indexing · M2 · [002-T26, 002-T27](../specs/002-onpage-seo/tasks.md) · không cần làm tay nữa: Google crawl lại `/` lúc 2026-10-15 05:55 (giờ VN), sau khi JSON-LD lên; URL Inspection API: rich result Events PASS cho 3 sự kiện, chỉ cảnh báo thiếu `offers`, `performer` (không bắt buộc). Muốn xem phần Local business thì vẫn có thể chạy Rich Results Test tay
 - [x] TK18 Chọn cách xử lý âm thanh video hero: B1 chỉ faststart (giữ âm thanh trong file, khách vẫn chưa nghe được), B2 nút bật tiếng trên video, B3 nút "Xem video có tiếng" mở trình phát riêng · M3 · [Q15](#câu-hỏi-chờ-chủ-quán), [003-T35](../specs/003-performance/tasks.md) · chọn B1, 2026-10-15
@@ -61,9 +61,9 @@ Mỗi câu chặn việc ghi ở cột "Chặn"; chưa có câu trả lời thì
 
 | # | Câu hỏi | Dùng cho | Chặn | Từ ngày |
 |---|---|---|---|---|
-| Q1 | Giờ đóng cửa: 00:00 hay 00:30? Mở mọi ngày trong tuần? Chưa xác định, cần chủ quán xác nhận | JSON-LD giờ mở cửa, Google Business Profile, hỏi đáp | 002-T23, TK01 (giờ đóng) | 2026-10-14 |
+| Q1 | Giờ đóng cửa: 00:00 hay 00:30? Mở mọi ngày trong tuần? **Trả lời 2026-11-07: mở 16:30, đóng 24:00, mọi ngày** | JSON-LD giờ mở cửa, Google Business Profile, hỏi đáp | — | 2026-10-14 |
 | Q2 | Có nhạc sống không; nếu có thì tối nào (sự kiện thứ Sáu ghi "Live performance")? | `amenityFeature`, thuộc tính hồ sơ Google, tiêu đề | 002-T23 | 2026-10-14 |
-| Q3 | Khoảng giá phổ biến? | `priceRange`, mức giá trên Google Maps | 002-T23 | 2026-10-14 |
+| Q3 | Khoảng giá phổ biến? **Trả lời 2026-11-07: 100.000 – 300.000 ₫ mỗi khách** | `priceRange`, mức giá trên Google Maps | — | 2026-10-14 |
 | Q4 | Hình thức thanh toán nhận (tiền mặt, chuyển khoản, thẻ, ví)? | `paymentAccepted`, thuộc tính hồ sơ Google | 002-T23 | 2026-10-14 |
 | Q5 | Chuỗi địa chỉ chính xác như đang ghi trên Google Business Profile? | Thông tin nhất quán mọi nơi (M5), địa chỉ trong JSON-LD | TK13 | 2026-10-14 |
 | Q6 | Gửi ảnh ngang độ phân giải cao (từ 1600 px; 16:9, 4:3, 1:1) | Đổi tên ảnh, `Restaurant.image`, ảnh chia sẻ riêng | 001-T40, 002-T25, 002-T31 | 2026-10-14 |
